@@ -1,55 +1,56 @@
+#import fun
+from sklearn import datasets
 from math import fsum, sqrt
 from random import sample
-from typing import Dict, Iterable, List, Tuple, Sequence
+from typing import Iterable, Tuple, Sequence
 from pprint import pprint
-from collections import defaultdict
 from functools import partial
 
-Point = Tuple[int, ...]
-Centroid = Point
+Data = Tuple[float, ...]
+Centroid = Data
+
+
+def load_data():
+    """load iris data and return 2D with rXc dimension
+    r - examples of each dataset, 
+    c-feature(sepal, and petal length, sepal, and petal width)
+    """
+    return [(a,b,c,d) for a,b,c,d in datasets.load_iris().data]
 
 def mean(data:Iterable[float]) -> float:
+    """calculating mean of data"""
     data = list(data)
     return fsum(data) / len(data)
 
-def dist(p:Point, q:Point, fsum = fsum, sqrt = sqrt, zip = zip)->float:
+def dist(p:Data, q:Data, fsum = fsum, sqrt = sqrt, zip = zip)->float:
+    """calculating ecleaudian distance between two dataset Datas"""
     return sqrt(fsum([(x - y)**2 for x, y in  zip(p, q)]))
 
-def assign_data(centroid: Sequence[Centroid], data:Iterable[Point])->Dict[Centroid, List[Point]]:
-    """grouping the data point to the closes centroids"""
-    d = defaultdict(list)
+def assign_labels(data:Iterable[Data], Centroid:Sequence[Centroid]):
+    """grouping the data Data to the closes centroids"""
+    labels =[]
+    for Data in data:
+        label = min(Centroid, key=partial(dist, Data))
+        labels.append(label)
+    return labels
 
-    for point in data:
-        closest_centroid =  min(centroid, key=partial(dist, point))
-        d[closest_centroid].append(point)
-    return dict(d)
-
-def compute_centroid(groups:Iterable[Sequence[Point]])->List[Centroid]:
+def compute_centroid(groups:Iterable[Sequence[Data]]): 
     """compute the centroid of each groups"""
-    return [tuple(map(mean, zip(*group))) for group in groups]
+    return [tuple(map(mean, zip(group))) for group in groups]
 
-def k_means(data:Iterable[Point], k:int = 2, iterations:int = 50) ->List[Centroid]:
+def k_means(data:Iterable[Data], k:int=3, iterations:int=50):
+    """perform k-means clustering on the given data set"""
+
     data = list(data)
     centroids = sample(data, k)
-
     for i in range(iterations):
-        labeled = assign_data(centroids, data)
-        centroids = compute_centroid(labeled.values())
-    
+        labeled = assign_labels(data, centroids)
+        centroids = compute_centroid(labeled)
     return centroids
 
 if __name__ == '__main__':
 
-    points = [
-    
-        (10, 41, 23), 
-        (22, 30, 29), 
-        (11, 42, 5), 
-        (20, 32, 4), 
-        (12, 40, 12), 
-        (21, 36, 23)
-    ]
-    centroids = k_means(points, k = 2)
-    d = assign_data(centroids, points)
-
+    iris = load_data()
+    centroids = k_means(iris, k = 3, iterations=50)
+    d = assign_labels(centroids, iris)
     pprint(d)

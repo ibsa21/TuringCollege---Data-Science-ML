@@ -1,0 +1,3 @@
+[submodule "Module-1/sprint-1/modernpython"]
+	path = Module-1/sprint-1/modernpython
+	url = https://github.com/rhettinger/modernpython.git

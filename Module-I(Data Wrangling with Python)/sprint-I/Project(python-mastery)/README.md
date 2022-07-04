@@ -4,9 +4,9 @@ A simple program which performs arithmetic operation.
 
 arithmetic_calculator performs operation such as:
 <ul>
-Addition/Substraction
-Divistion/Multiplication
-Take(n) root of a number
+  <li>Addition/Substraction</li>
+  <li>Divistion/Multiplication</li>
+  <li>Take(n) root of a number</li>
 </ul>
 
 Installation

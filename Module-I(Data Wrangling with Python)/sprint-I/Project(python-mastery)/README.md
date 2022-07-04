@@ -13,8 +13,9 @@ Installation
 ------------
 
 It can be installed with::
-
-  $ pip install arithmetic_calculator
+```
+    pip install arithmetic_calculator
+```
 
 Author
 ------------

@@ -2,7 +2,7 @@ Arithmetic Calculator
 =====================
 A simple program which performs arithmetic operation.
 
-arithmetic_calculator performs operation such as:
+Arithmetic_calculator performs operation such as:
 <ul>
   <li>Addition/Substraction</li>
   <li>Divistion/Multiplication</li>
@@ -14,14 +14,14 @@ Installation
 
 It can be installed with::
 ```
-pip install arithmetic_calculator
+pip install arithmetic_calc
 ```
 
 Usage
 -----
-To use arithmetic_calculator, we first create an object
+To use arithmetic_calc, we first create an object
 ```
-from arithmetic_calculator import Arithmetic()
+from arithmetic_calc import Arithmetic()
 calc = Arithmetic()
 ```
 Addition of two numbers
@@ -32,14 +32,14 @@ result = 5
 Addition of a number to the value in memory
 ```
 result = calc.add(1)        #same as result = calc(1, 5)
-result = 6                  # 5 is value of number from memory
+result = 6                  #5 is value of number from memory
 ```
 Substraction
 ```
 result = calc.substract(4, 2)
 result = 2
 ```
-Divisio
+Division
 ```
 result = calc.divide(4, 2)
 result = 2.0

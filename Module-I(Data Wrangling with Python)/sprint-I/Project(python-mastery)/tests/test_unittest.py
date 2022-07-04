@@ -1,7 +1,7 @@
 from decimal import DivisionByZero
 import py.test
 import unittest
-from arithmetic_calculator import Arithmetic
+from arithmetic_calc import Arithmetic
 
 class TestCalculatorMethods(unittest.TestCase):
 
@@ -27,7 +27,7 @@ class TestCalculatorMethods(unittest.TestCase):
     
     def test_root(self):
         calc = Arithmetic()
-        self.assertAlmostEqual(calc.root(2), 1.4142135623730951)
+        self.assertAlmostEqual(calc.root(2, 2), 1.4142135623730951)
     
     def test_all_arithmetic(self):
         calc = Arithmetic()

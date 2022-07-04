@@ -4,7 +4,7 @@ from hypothesis import given, assume, strategies as st
 from decimal import DivisionByZero, DivisionImpossible
 
 
-from arithmetic_calculator import Arithmetic
+from arithmetic_calc import Arithmetic
 
 # test for type and domain error
 def test_division():
@@ -13,8 +13,8 @@ def test_division():
         calc.divide(2, 0)
 def test_root():
     calc = Arithmetic()
-    with py.test.raises(ValueError):
-        calc.root(-4)
+    with py.test.raises(ZeroDivisionError):
+        calc.root(-1, 0)
 
 def test_type_error():
     calc = Arithmetic()
@@ -49,5 +49,4 @@ def test_calculator_hypho(a, b):
     assert math.isclose(result, a/b, abs_tol=(0.001))
     assert result == calc.memo
     
-    calc.memo = abs(calc.memo)
-    assert math.isclose(calc.root(), calc.memo)
+    assert math.isclose(calc.root(4, 2), 2)

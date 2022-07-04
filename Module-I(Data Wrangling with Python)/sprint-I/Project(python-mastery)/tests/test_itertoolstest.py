@@ -1,7 +1,7 @@
 from itertools import permutations, combinations
 import unittest
 
-from arithmetic_calculator import Arithmetic
+from arithmetic_calc import Arithmetic
 
 class ItertoolsTesting():
 

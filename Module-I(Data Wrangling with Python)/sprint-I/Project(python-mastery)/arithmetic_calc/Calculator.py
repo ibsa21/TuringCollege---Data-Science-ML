@@ -99,17 +99,20 @@ class Arithmetic:
         self.memo = result
         return self.memo
     
-    def root(self, num: Optional[float] = None)->float:
+    def root(self, num:float, root:float )->float:
         ''' Compute root of a number
 
         Example 1:
-            >>> result = calc.root(8.0)
+            >>> result = calc.root(8.0,2)
             >>> result
             2.8284271247461903
-        '''
         
-        num = self.memo if num is None else num
-        result =  math.sqrt(num)
+        Example 2: 
+            >>> result = calc.root(-4, 2)
+            >>> result
+            (1.2246467991473532e-16+2j)
+        '''
+        result =  pow(num, 1/root)
         self.memo = result
         return self.memo
 

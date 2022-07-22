@@ -4,3 +4,9 @@
 [submodule "Module-I(Data Wrangling with Python)/sprint-I/modernpython"]
 	path = Module-I(Data Wrangling with Python)/sprint-I/modernpython
 	url = https://github.com/rhettinger/modernpython.git
+[submodule "iabrah-DWWP.2"]
+	path = iabrah-DWWP.2
+	url = https://github.com/TuringCollegeSubmissions/iabrah-DWWP.2
+[submodule "Module-I(Data Wrangling with Python)/sprint-II/iabrah-DWWP.2"]
+	path = Module-I(Data Wrangling with Python)/sprint-II/iabrah-DWWP.2
+	url = https://github.com/TuringCollegeSubmissions/iabrah-DWWP.2

@@ -41,7 +41,8 @@ def k_means(data:Iterable[Data], k:int=3, iterations:int=50):
 
     data = list(data)
     centroids = sample(data, k)
-    for i in range(iterations):
+    while i < iterations or prev_centroids != centroid:
         labeled = assign_labels(data, centroids)
+        prev_centroid = centroids
         centroids = compute_centroid(labeled)
     return centroids
